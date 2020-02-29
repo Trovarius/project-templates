@@ -7,10 +7,10 @@ dotenv.config();
 const app = express();
 const port = process.env.SERVER_PORT; // default port to listen
 
-app.use(express.static(__dirname +'./../../')); // serves the index.html
+app.use("/", express.static(__dirname +'./../../')); // serves the index.html
 
 // define a route handler for the default home page
-app.get("/", (_, res) => {
+app.get("/api", (_, res) => {
   res.send("Hello world!");
 });
 
