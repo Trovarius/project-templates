@@ -1,5 +1,7 @@
 var webpack = require("webpack");
 var path = require("path");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, "./dist");
 var APP_DIR = path.resolve(__dirname, "./src/client");
@@ -61,5 +63,18 @@ module.exports = {
   externals: {
     react: "React",
     "react-dom": "ReactDOM"
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+        hash: true,
+        title: 'My Awesome application',
+        myPageHeader: 'THUNDERRRRR',
+        template: './src/static/index.html',
+        filename: './index.html' //relative to root of the application
+    }),
+    new CopyPlugin([
+        { from: './node_modules/react/umd/react.development.js', to: './dependencies/' },
+        { from: './node_modules/react-dom/umd/react-dom.development.js', to: './dependencies/' },
+      ]),
+]
 };

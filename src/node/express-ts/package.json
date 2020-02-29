@@ -11,7 +11,7 @@
     "watch:client": "./node_modules/.bin/webpack -w",
     "start": "npm-run-all --parallel watch:server watch:client",
     "webpack": "./node_modules/.bin/webpack",
-    "clean": "rimraf build",
+    "clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -22,7 +22,9 @@
     "@types/node": "^13.7.7",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
+    "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
+    "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
