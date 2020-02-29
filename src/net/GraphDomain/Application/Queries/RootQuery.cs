@@ -23,7 +23,7 @@ namespace GraphDomain.Application.Queries
             FieldAsync<PostQueryInput, ListGraphType<PostQueryOutput>>("posts",
                arguments: PostQueryInput.GetArguments(),
                resolve: context => {
-                   return new List<PostQueryOutput>();
+                   return Task.FromResult<ListGraphType<PostQueryOutput>>(new ListGraphType<PostQueryOutput>());
                });
         }
     }
