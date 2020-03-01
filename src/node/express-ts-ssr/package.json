@@ -1,0 +1,49 @@
+{
+  "name": "express-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "prestart": "npm run clean && npm run build && npm run webpack",
+    "watch:server": "nodemon -e ts,tsx -w ./ -x ",
+    "watch:client": "./node_modules/.bin/webpack -w",
+    "start": "npm-run-all --parallel watch:server watch:client",
+    "clean": "rimraf dist",
+    "dev:server": "./node_modules/.bin/webpack --env.platform=server ",
+    "dev:client": "./node_modules/.bin/webpack --env.platform=client -w",
+    "dev:start": "nodemon -e ts,tsx -w ./ -x ",
+    "dev": "npm-run-all clean dev:server --parallel dev:start dev:client"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.2",
+    "@types/node": "^13.7.7",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^8.0.2",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^1.1.3",
+    "ts-loader": "^6.2.1",
+    "tslint": "^6.0.0",
+    "typescript": "^3.8.3",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  }
+}

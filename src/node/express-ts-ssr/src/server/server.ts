@@ -1,6 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
+import React from 'react';
+import { renderToString } from 'react-dom/server';
 import { Server } from "http";
+import html from "./html";
+import App from "../client/App"
 
 dotenv.config();
 
@@ -10,9 +14,15 @@ const port = process.env.SERVER_PORT; // default port to listen
 app.use("/", express.static(__dirname + "./../")); // serves the index.html
 
 // define a route handler for the default home page
-app.get("/api", (_, res) => {
-  res.send("Hello world! sdsadadasddssd");
-});
+app.get('/', (_, res) => {
+  const body = renderToString(React.createElement(App));
+
+  res.send(
+    html({
+      body
+    })
+  );
+})
 
 let server:Server;
 
