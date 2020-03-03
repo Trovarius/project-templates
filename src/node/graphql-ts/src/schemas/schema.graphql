@@ -1,0 +1,17 @@
+type Query {
+    getBeers: [Beer!]!
+    getBeer(id: ID!) : Beer
+}
+
+type Beer {
+    id: ID!
+    name: String
+    proof: Int
+    isAllowed: Boolean
+    sellIn: [Shop]
+}
+
+type Shop {
+    id: ID!
+    name: String
+}
