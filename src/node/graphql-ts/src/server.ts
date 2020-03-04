@@ -1,7 +1,7 @@
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { importSchema } from "graphql-import";
-import BeerResolver from "./resolvers/BeerResolver";
+import BeerResolver, { BeerEntity } from "./resolvers/BeerResolver";
 
 (async () => {
   const typeDefs = await importSchema("**/*.graphql");
@@ -11,7 +11,10 @@ import BeerResolver from "./resolvers/BeerResolver";
     Query: {
         ...BeerResolver.Query
     },
-    ...BeerResolver.Type
+    ...BeerResolver.Type,
+    Mutation : {
+      ...BeerResolver.Mutation,
+    }
   };
 
   const server = new ApolloServer({ typeDefs, resolvers });
