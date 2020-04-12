@@ -15,3 +15,18 @@ type Shop {
     id: ID!
     name: String
 }
+
+input BeerInput {
+    name: String
+    proof: Int
+    isAllowed: Boolean
+}
+
+type BeerCommands {
+    add(input: BeerInput) : Beer
+    remove(id: Int!) : Boolean
+}
+
+extend type Mutation {
+    Beer: BeerCommands,
+}

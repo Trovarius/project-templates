@@ -2,7 +2,7 @@ interface BeerInput {
   id: Number;
 }
 
-interface BeerEntity {
+export interface BeerEntity {
     id: Number
     name: String
     proof: Number
@@ -14,7 +14,7 @@ class Beer {
     proof: Number | undefined
 }
 
-const data : Array<BeerEntity> = [
+let data : Array<BeerEntity> = [
     { id: 1, name: "Guiness", proof: 21 },
     { id: 80, name: "Nortada", proof: 10 },
     { id: 20, name: "SKOL", proof: 50 },
@@ -58,5 +58,17 @@ export default {
           },
           sellIn: sellInHandler.Handler
       },
-  }
+  },
+  Mutation: {
+    Beer: () => ({
+      add({ input } : { input: BeerEntity }) : BeerEntity {
+        data.push({ id: data.length, ...input });
+        return data[data.length -1];
+      },
+      remove({ id } : { id: Number }) : Boolean {
+        data = data.filter(x => x.id !== id);
+        return true;
+      } 
+    })
+  },
 };
