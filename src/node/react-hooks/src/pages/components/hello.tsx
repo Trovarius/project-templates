@@ -38,13 +38,14 @@ export function DataLoader(props : any){
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(()=>{
-        fetch("http://localhost:3000/posts")
-        .then(response => response.json())
-        .then(data => {
-            setData(data);
-            console.log(data);
-            setIsLoading(false);
-        });
+        setTimeout(() =>{
+            fetch("http://localhost:3000/posts")
+            .then(response => response.json())
+            .then(data => {
+                setData(data);
+                setIsLoading(false);
+            });
+        } , 4000)
     }, []);
 
     return (<div>

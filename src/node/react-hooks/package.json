@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && tsc && browserify dist/index.js dist/App.js -o dist/bundle.js",
+    "build": "rimraf dist && tsc && npm run sass && browserify dist/index.js dist/App.js -o dist/bundle.js",
     "start:server": "json-server --watch server.json",
-    "start": "npm run build && npm run start:server"
+    "start": "npm run build && npm run start:server",
+    "sass": "node-sass --recursive ./src/public/sass/ -o ./dist/css/"
   },
   "author": "",
   "license": "ISC",
