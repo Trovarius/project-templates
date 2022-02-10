@@ -17,7 +17,7 @@
     "@types/react-dom": "^16.9.6",
     "browserify": "^16.5.1",
     "json-server": "^0.16.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "node-ts": "^5.0.5",
     "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
